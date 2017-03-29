@@ -157,4 +157,4 @@ bar {
 }
 
 exec --no-startup-id synclient NaturalScrolling=1 VertScrollDelta=-113
-exec --no-startup-id "setxkbmap -model pc105 -layout us,se -option grp:alt_shift_toggle -option caps:swapescape"
+exec --no-startup-id "setxkbmap -model asus_laptop -layout us,se -option grp:alt_shift_toggle -option caps:swapescape"
