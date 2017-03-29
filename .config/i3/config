@@ -92,29 +92,41 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+# workspaces
+set $workspace1 "1: "
+set $workspace2 "2"
+set $workspace3 "3"
+set $workspace4 "4"
+set $workspace5 "5"
+set $workspace6 "6"
+set $workspace7 "7"
+set $workspace8 "8"
+set $workspace9 "9"
+set $workspace10 "10"
+
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+1 $workspace1
+bindsym $mod+2 $workspace2
+bindsym $mod+3 $workspace3
+bindsym $mod+4 $workspace4
+bindsym $mod+5 $workspace5
+bindsym $mod+6 $workspace6
+bindsym $mod+7 $workspace7
+bindsym $mod+8 $workspace8
+bindsym $mod+9 $workspace9
+bindsym $mod+0 $workspace10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+1 move container to $workspace1
+bindsym $mod+Shift+2 move container to $workspace2
+bindsym $mod+Shift+3 move container to $workspace3
+bindsym $mod+Shift+4 move container to $workspace4
+bindsym $mod+Shift+5 move container to $workspace5
+bindsym $mod+Shift+6 move container to $workspace6
+bindsym $mod+Shift+7 move container to $workspace7
+bindsym $mod+Shift+8 move container to $workspace8
+bindsym $mod+Shift+9 move container to $workspace9
+bindsym $mod+Shift+0 move container to $workspace10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -156,5 +168,27 @@ bar {
         status_command i3status
 }
 
+bindsym $mod+shift+x exec i3lock
+
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+# Sreen brightness controls
+#bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+#bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+
+# Touchpad controls
+bindsym XF86TouchpadToggle exec /home/coffee/.config/i3/toggletouchpad.sh # toggle touchpad
+
+# Media player controls
+#bindsym XF86AudioPlay exec playerctl play
+#bindsym XF86AudioPause exec playerctl pause
+#bindsym XF86AudioNext exec playerctl next
+#bindsym XF86AudioPrev exec playerctl previous
+
 exec --no-startup-id synclient NaturalScrolling=1 VertScrollDelta=-113
 exec --no-startup-id "setxkbmap -model asus_laptop -layout us,se -option grp:alt_shift_toggle -option caps:swapescape"
+#exec_always feh --bg-scale <absolutepathtofile>
+exec_always /home/coffee/.screenlayout/layout.sh
