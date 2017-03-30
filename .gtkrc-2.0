@@ -3,8 +3,8 @@
 
 include "/home/coffee/.gtkrc-2.0.mine"
 gtk-theme-name="Arc-Dark"
-gtk-icon-theme-name="hicolor"
-gtk-font-name="Sans 10"
+gtk-icon-theme-name="ubuntu-mobile"
+gtk-font-name="Ubuntu Light 10"
 gtk-cursor-theme-name="DMZ-White"
 gtk-cursor-theme-size=0
 gtk-toolbar-style=GTK_TOOLBAR_BOTH
