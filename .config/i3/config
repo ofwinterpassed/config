@@ -36,7 +36,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-#bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -192,13 +192,13 @@ bar {
 	}
 }
 
-bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 486 -opacity 85 -bw 0 -color-normal $bg-color,$text-color,$bg-color,$bg-color,$text-color -color-urgent $bg-color,$bg-color,$text-color,$bg-color,#9575cd -color-active $bg-color,$text-color,$bg-color,$bg-color,$text-color -color-window $bg-color,$text-color,$text-color -font Ubuntu Bold 12 -no-config
+#bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 486 -opacity 85 -bw 0 -color-normal $bg-color,$text-color,$bg-color,$bg-color,$text-color -color-urgent $bg-color,$bg-color,$text-color,$bg-color,#9575cd -color-active $bg-color,$text-color,$bg-color,$bg-color,$text-color -color-window $bg-color,$text-color,$text-color -font Ubuntu Bold 12 -no-config
 bindsym $mod+shift+x exec i3lock
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle # mute sound
 
 # Sreen brightness controls
 #bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
