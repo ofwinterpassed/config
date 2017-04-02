@@ -46,6 +46,7 @@ bindsym $mod+d exec dmenu_run
 bindsym $mod+j focus left
 bindsym $mod+k focus down
 bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
 bindsym $mod+odiaeresis focus right
 
 # alternatively, you can use the cursor keys:
@@ -58,6 +59,7 @@ bindsym $mod+Right focus right
 bindsym $mod+Shift+j move left
 bindsym $mod+Shift+k move down
 bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
 bindsym $mod+Shift+odiaeresis move right
 
 # alternatively, you can use the cursor keys:
@@ -130,6 +132,7 @@ bindsym $mod+Shift+0 move container to workspace $workspace10
 
 # assign apps to workspaces
 assign [class="Firefox"] $workspace1
+assign [class="Surf"] $workspace3
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
