@@ -13,7 +13,8 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Ubuntu, Font Awesome 12
+font pango:Quango, Font Awesome 12
+#font pango:moonhouse, Font Awesome 12
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -39,8 +40,8 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+# enstalled.
+bindsym $mod+p exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 bindsym $mod+j focus left
@@ -98,12 +99,12 @@ bindsym $mod+a focus parent
 set $workspace1 "1 "
 set $workspace2 "2 "
 set $workspace3 "3 "
-set $workspace4 "4"
-set $workspace5 "5"
-set $workspace6 "6"
-set $workspace7 "7"
-set $workspace8 "8"
-set $workspace9 "9"
+set $workspace4 "4 "
+set $workspace5 "5 "
+set $workspace6 "6 "
+set $workspace7 "7 "
+set $workspace8 "8 "
+set $workspace9 "9 "
 set $workspace10 "10 "
 
 # switch to workspace
@@ -133,6 +134,12 @@ bindsym $mod+Shift+0 move container to workspace $workspace10
 # assign apps to workspaces
 assign [class="Firefox"] $workspace1
 assign [class="Surf"] $workspace3
+assign [instance="inbox.google.com" class="Google-chrome"] $workspace4
+for_window [instance="inbox.google.com" class="Google-chrome"] border none
+assign [instance="youtube.google.com" class="Google-chrome"] $workspace5
+for_window [instance="youtube.google.com" class="Google-chrome"] border none
+assign [class="Google Play Music Desktop Player"] $workspace10
+for_window [class="Google Play Music Desktop Player"] border none
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -167,8 +174,8 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-set $bg-color 	         #282828
-set $inactive-bg-color   #282828
+set $bg-color 	         #000000
+set $inactive-bg-color   #000000
 set $text-color          #f3f4f5
 set $inactive-text-color #838485
 set $urgent-bg-color     #E53935
@@ -176,18 +183,18 @@ set $urgent-bg-color     #E53935
 # window colors
 #                       border              background         text                 indicator
 client.focused          $bg-color           $bg-color          $text-color          #00ff00
-client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color #00ff00
-client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color #00ff00
+client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
+client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
 client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        position top
-        status_command i3blocks -c ~/.config/i3/i3blocks.conf
+	position top
+  status_command i3blocks -c ~/.config/i3/i3blocks.conf
 	colors {
 		background $bg-color
-	    	separator #757575
+		separator #757575
 		#                  border             background         text
 		focused_workspace  $bg-color          $bg-color          $text-color
 		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
@@ -196,7 +203,7 @@ bar {
 }
 
 #bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 486 -opacity 85 -bw 0 -color-normal $bg-color,$text-color,$bg-color,$bg-color,$text-color -color-urgent $bg-color,$bg-color,$text-color,$bg-color,#9575cd -color-active $bg-color,$text-color,$bg-color,$bg-color,$text-color -color-window $bg-color,$text-color,$text-color -font Ubuntu Bold 12 -no-config
-bindsym $mod+shift+x exec i3lock
+bindsym $mod+shift+x exec i3lock -i /home/coffee/Pictures/riddick2.png
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5% #increase sound volume
@@ -215,11 +222,17 @@ bindsym XF86TouchpadToggle exec /home/coffee/.config/i3/toggletouchpad.sh # togg
 #bindsym XF86AudioPause exec playerctl pause
 #bindsym XF86AudioNext exec playerctl next
 #bindsym XF86AudioPrev exec playerctl previous
+exec --no-startup-id echo "$0: DESKTOP_AUTOSTART_ID $DESKTOP_AUTOSTART_ID, registering with org.gnome.SessionManager"
+exec --no-startup-id dbus-send --session --print-reply=literal --dest=org.gnome.SessionManager "/org/gnome/SessionManager" org.gnome.SessionManager.RegisterClient "string:i3" "string:$DESKTOP_AUTOSTART_ID"
 
 exec --no-startup-id synclient NaturalScrolling=1 VertScrollDelta=-113
 exec --no-startup-id "setxkbmap -model asus_laptop -layout us,se -option grp:alt_shift_toggle -option caps:swapescape"
-exec_always start-pulseaudio-x11
-#exec_always feh --bg-scale <absolutepathtofile>
+exec --no-startup-id start-pulseaudio-x11
+exec_always feh --bg-scale /home/coffee/Pictures/riddick.jpg
 exec_always /home/coffee/.screenlayout/layout.sh
-exec_always --no-startup-id nm-applet
-exec_always dropbox start
+exec --no-startup-id nm-applet
+exec --no-startup-id dropbox start
+exec --no-startup-id compton -f --backend glx
+exec google-chrome --app=https://inbox.google.com
+exec google-chrome --app=https://youtube.google.com
+exec google-play-music-desktop-player

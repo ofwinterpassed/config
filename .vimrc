@@ -157,6 +157,8 @@ if !exists(":DiffOrig")
 endif
 set tabstop=2 shiftwidth=2 softtabstop=0 noexpandtab
 colorscheme molokai
+hi NonText ctermbg=NONE
+hi Normal guibg=NONE ctermbg=NONE
 set number
 set relativenumber
 set clipboard=unnamed
