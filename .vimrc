@@ -210,6 +210,7 @@ nnoremap <S-F8> :LL process interrupt<CR>
 nnoremap <F9> :LL print <C-R>=expand('<cword>')<CR>
 vnoremap <F9> :<C-U>LL print <C-R>=lldb#util#get_selection()<CR><CR>
 
-
+" air0line
+set laststatus=2
 
 
