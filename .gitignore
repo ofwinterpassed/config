@@ -94,6 +94,7 @@
 .profile
 .recently-used
 .scribus
+.selected_editor
 .ssh
 .sudo*
 .surf
