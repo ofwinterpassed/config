@@ -1,0 +1,15 @@
+{
+	"segment_data": {
+		"branch": {
+			"args": {
+				"status_colors": true,
+				"ignore_statuses": ["U"]
+			}
+		},
+		"gitstatus": {
+			"args": {
+				"show_tag": true
+			}
+		}
+	}
+}
