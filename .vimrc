@@ -41,8 +41,8 @@ call vundle#begin()
 	Plugin 'rhysd/vim-clang-format'
 	Plugin 'tpope/vim-surround'
 	Plugin 'tpope/vim-fugitive'
-	Plugin 'mhinz/vim-startify'
-	Plugin 'critiqjo/lldb.nvim'
+	"Plugin 'mhinz/vim-startify'
+	"Plugin 'critiqjo/lldb.nvim'
 	Plugin 'rdnetto/YCM-Generator'
 	Plugin 'jreybert/vimagit'
 	Plugin 'vim-airline/vim-airline'
@@ -75,6 +75,8 @@ filetype plugin indent on    " required
 
 
 
+set path+=**
+set wildmenu
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
@@ -169,13 +171,11 @@ set clipboard=unnamed
 :endfunction
 
 if system("uname") == "Linux"
-	let g:clang_library_path = '/usr/lib/llvm-3.6/lib'
+	let g:clang_library_path = '/usr/lib/llvm-5.0/lib'
 else
 	let g:clang_library_path = '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
-	map <C-I> :pyf /usr/local/Cellar/clang-format/2016-03-29/share/clang/clang-format.py<cr>
-	imap <C-I> <c-o>:pyf /usr/local/Cellar/clang-format/2016-03-29/share/clang/clang-format.py<cr>
 endif
-"
+
 " Python
 let g:python_host_prog = '/System/Library/Frameworks/Python.framework/Versions/2.7/bin/python'
 
