@@ -15,6 +15,9 @@ export QTDIR
 export PATH="/Users/johanneschristenson/Library/Python//3.6/bin:$PATH"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+
+# git completion
+source /Library/Developer/CommandLineTools/usr/share/git-core/git-completion.zsh
 # Powerline
 if [[ -r /Users/johanneschristenson/Library/Python/3.6/lib/python/site-packages/powerline/bindings/zsh/powerline.zsh ]]; then
     source /Users/johanneschristenson/Library/Python/3.6/lib/python/site-packages/powerline/bindings/zsh/powerline.zsh
