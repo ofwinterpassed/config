@@ -1,6 +1,6 @@
 export EDITOR='vim'
 
-if [[ `uname | grep -q Darwin` ]]; then
+if [[ "i$(uname 2> /dev/null)" != "Linux" ]]; then
 	# Setting PATH for Python 3.5
 	# The orginal version is saved in .bash_profile.pysave
 	PATH="~/android-sdk-macosx/tools:~/android-sdk-macosx/platforms:~/android-sdk-macosx/platform-tools:/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
@@ -17,8 +17,6 @@ if [[ `uname | grep -q Darwin` ]]; then
 	export LC_ALL=en_US.UTF-8
 	export LANG=en_US.UTF-8
 
-	# git completion
-	source /Library/Developer/CommandLineTools/usr/share/git-core/git-completion.zsh
 	# Powerline
 	if [[ -r /Users/johanneschristenson/Library/Python/3.6/lib/python/site-packages/powerline/bindings/zsh/powerline.zsh ]]; then
 		source /Users/johanneschristenson/Library/Python/3.6/lib/python/site-packages/powerline/bindings/zsh/powerline.zsh
