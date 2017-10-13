@@ -1,6 +1,7 @@
 export EDITOR='vim'
 
-if [[ "i$(uname 2> /dev/null)" != "Linux" ]]; then
+if [ "$(uname 2> /dev/null)" != "Linux" ]
+then
 	# Setting PATH for Python 3.5
 	# The orginal version is saved in .bash_profile.pysave
 	PATH="~/android-sdk-macosx/tools:~/android-sdk-macosx/platforms:~/android-sdk-macosx/platform-tools:/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
@@ -18,17 +19,19 @@ if [[ "i$(uname 2> /dev/null)" != "Linux" ]]; then
 	export LANG=en_US.UTF-8
 
 	# Powerline
-	if [[ -r /Users/johanneschristenson/Library/Python/3.6/lib/python/site-packages/powerline/bindings/zsh/powerline.zsh ]]; then
+	if [ -r /Users/johanneschristenson/Library/Python/3.6/lib/python/site-packages/powerline/bindings/zsh/powerline.zsh ]
+	then
 		source /Users/johanneschristenson/Library/Python/3.6/lib/python/site-packages/powerline/bindings/zsh/powerline.zsh
 	fi
 	source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 else
 	# Powerline
-	if [[ -r /usr/share/powerline/bindings/zsh/powerline.zsh ]]; then
+	if [ -r /usr/share/powerline/bindings/zsh/powerline.zsh ]
+	then
 		source /usr/share/powerline/bindings/zsh/powerline.zsh
 	fi
 	source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-	
+
 fi
 # Set up the prompt
 
