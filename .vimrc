@@ -5,7 +5,7 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 if v:progname =~? "evim"
-  finish
+	finish
 endif
 
 let $PATH = '/usr/bin:'.$PATH
@@ -16,49 +16,49 @@ call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 
-	" let Vundle manage Vundle, required
-	Plugin 'VundleVim/Vundle.vim'
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
 
-	" The following are examples of different formats supported.
-	" Keep Plugin commands between vundle#begin/end.
-	" plugin on GitHub repo
-	"Plugin 'tpope/vim-fugitive'
-	" plugin from http://vim-scripts.org/vim/scripts.html
-	"Plugin 'L9'
-	" Git plugin not hosted on GitHub
-	"Plugin 'git://git.wincent.com/command-t.git'
-	" git repos on your local machine (i.e. when working on your own plugin)
-	"Plugin 'file:///home/gmarik/path/to/plugin'
-	" The sparkup vim script is in a subdirectory of this repo called vim.
-	" Pass the path to set the runtimepath properly.
-	"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-	" Avoid a name conflict with L9
-	"Plugin 'user/L9', {'name': 'newL9'}
-	Plugin 'Valloric/YouCompleteMe'
-	Plugin 'octol/vim-cpp-enhanced-highlight'
-	Plugin 'tomasr/molokai'
-	Plugin 'kana/vim-operator-user'
-	Plugin 'rhysd/vim-clang-format'
-	Plugin 'tpope/vim-surround'
-	Plugin 'tpope/vim-fugitive'
-	"Plugin 'mhinz/vim-startify'
-	"Plugin 'critiqjo/lldb.nvim'
-	Plugin 'rdnetto/YCM-Generator'
-	Plugin 'jreybert/vimagit'
-	Plugin 'vim-airline/vim-airline'
-	"Plugin 'LucHermitte/lh-vim-lib'
-	"Plugin 'LucHermitte/lh-tags'
-	"Plugin 'LucHermitte/lh-dev'
-	"Plugin 'LucHermitte/lh-brackets'
-	"Plugin 'LucHermitte/searchInRuntime'
-	"Plugin 'LucHermitte/mu-template'
-	"Plugin 'tomtom/stakeholders_vim'
-	"Plugin 'LucHermitte/lh-cpp'
-	"Plugin 'LucHermitte/vim-refactor'
-	"Plugin 'LucHermitte/clang_indexer'
-	"Plugin 'LucHermitte/vim-clang'
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+"Plugin 'tpope/vim-fugitive'
+" plugin from http://vim-scripts.org/vim/scripts.html
+"Plugin 'L9'
+" Git plugin not hosted on GitHub
+"Plugin 'git://git.wincent.com/command-t.git'
+" git repos on your local machine (i.e. when working on your own plugin)
+"Plugin 'file:///home/gmarik/path/to/plugin'
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Avoid a name conflict with L9
+"Plugin 'user/L9', {'name': 'newL9'}
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'tomasr/molokai'
+Plugin 'kana/vim-operator-user'
+Plugin 'rhysd/vim-clang-format'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-fugitive'
+"Plugin 'mhinz/vim-startify'
+"Plugin 'critiqjo/lldb.nvim'
+Plugin 'rdnetto/YCM-Generator'
+Plugin 'jreybert/vimagit'
+Plugin 'vim-airline/vim-airline'
+"Plugin 'LucHermitte/lh-vim-lib'
+"Plugin 'LucHermitte/lh-tags'
+"Plugin 'LucHermitte/lh-dev'
+"Plugin 'LucHermitte/lh-brackets'
+"Plugin 'LucHermitte/searchInRuntime'
+"Plugin 'LucHermitte/mu-template'
+"Plugin 'tomtom/stakeholders_vim'
+"Plugin 'LucHermitte/lh-cpp'
+"Plugin 'LucHermitte/vim-refactor'
+"Plugin 'LucHermitte/clang_indexer'
+"Plugin 'LucHermitte/vim-clang'
 
-	" All of your Plugins must be added before the following line
+" All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
@@ -127,20 +127,20 @@ if has("autocmd")
 
 	" Put these in an autocmd group, so that we can delete them easily.
 	augroup vimrcEx
-	au!
+		au!
 
-	" For all text files set 'textwidth' to 78 characters.
-	autocmd FileType text setlocal textwidth=78
+		" For all text files set 'textwidth' to 78 characters.
+		autocmd FileType text setlocal textwidth=78
 
-	" When editing a file, always jump to the last known cursor position.
-	" Don't do it when the position is invalid or when inside an event handler
-	" (happens when dropping a file on gvim).
-	" Also don't do it when the mark is in the first line, that is the default
-	" position when opening a file.
-	autocmd BufReadPost *
-		\ if line("'\"") > 1 && line("'\"") <= line("$") |
-		\   exe "normal! g`\"" |
-		\ endif
+		" When editing a file, always jump to the last known cursor position.
+		" Don't do it when the position is invalid or when inside an event handler
+		" (happens when dropping a file on gvim).
+		" Also don't do it when the mark is in the first line, that is the default
+		" position when opening a file.
+		autocmd BufReadPost *
+					\ if line("'\"") > 1 && line("'\"") <= line("$") |
+					\   exe "normal! g`\"" |
+					\ endif
 
 	augroup END
 
@@ -155,7 +155,7 @@ endif " has("autocmd")
 " Only define it when not defined already.
 if !exists(":DiffOrig")
 	command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
-			\ | wincmd p | diffthis
+				\ | wincmd p | diffthis
 endif
 set tabstop=2 shiftwidth=2 softtabstop=0 noexpandtab
 colorscheme molokai
@@ -164,6 +164,7 @@ hi Normal guibg=NONE ctermbg=NONE
 set number
 set relativenumber
 set clipboard=unnamed
+set foldmethod=syntax
 
 :function FormatFile()
 :  let l:lines="all"
