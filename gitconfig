@@ -1,0 +1,52 @@
+[core]
+	excludesfile = /Users/johanneschristenson/.gitignore_global
+	autocrlf = input
+	editor = /usr/local/bin/vim
+	pager = less -x 5,9,13,17,21
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[alias]
+	tree = log --oneline --decorate --graph
+	staged = diff --cached
+	glog = log --graph --stat --all --decorate=full
+	st = status -s -b
+	slog = log --graph --pretty=format:'%C(yellow)%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	tlog = log --pretty=format:'%h : %s' --topo-order --graph
+	sslog = log --oneline --graph --decorate=full
+	path = config --get remote.origin.url
+	unstage = reset HEAD --
+	last = log -1 HEAD
+	unpublished = log origin/master..HEAD
+	web = instaweb --httpd=webrick
+	stopweb = instaweb --stop
+	tagbydate = log --tags --simplify-by-decoration --pretty=format:%ai %d
+	xinit = !git init && touch .gitignore && git add .gitignore && git commit -mInit
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	lgc = log --pretty=format:'%h' 
+	wip = commit -a -mWIP
+	sourcetree = !open -a SourceTree .
+	pushfiles = !git diff --stat origin/$(git branch | grep '^*' | cut -c 3-)
+	out = !git log --oneline HEAD ^origin/$(git branch | grep '^*' | cut -c 3-)
+	fp = !git stash && git pull && git stash pop
+	co = checkout
+[branch]
+	autosetuprebase = always
+[merge]
+	tool = vimdiff
+	conflictstyle = diff3
+[mergetool "kdiff3"]
+	cmd = kdiff3 \"$BASE\" \"$LOCAL\" \"$REMOTE\" -o \"$MERGED\"
+	trustExitCode = false
+#	path = /Applications/kdiff3.app/Contents/MacOS/kdiff3
+[mergetool]
+	keepBackup = false
+	prompt = false
+
+[diff]
+	tool = kdiff3
+[difftool "kdiff3"]
+	cmd = /Applications/kdiff3.app/Contents/MacOS/kdiff3 $LOCAL $REMOTE
