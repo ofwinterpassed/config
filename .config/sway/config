@@ -72,6 +72,9 @@ output * bg /home/coffee/Pictures/riddick.jpg fill
     # start your launcher
     bindsym $mod+d exec $menu
 
+		# lock screen
+		bindsym $mod+shift+x exec i3lock -i /home/coffee/Pictures/riddick2.png
+
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
     # Despite the name, also works for non-floating windows.
