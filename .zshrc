@@ -24,6 +24,9 @@ then
 		source /Users/johanneschristenson/Library/Python/3.6/lib/python/site-packages/powerline/bindings/zsh/powerline.zsh
 	fi
 	source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+	# gnome-keyring
+	export $(gnome-keyring-daemon -s)
 else
 	# Powerline
 	if [ -r /usr/share/powerline/bindings/zsh/powerline.zsh ]

@@ -31,7 +31,10 @@ font pango:Quango, Font Awesome 12
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec terminology
+
+# start a browser
+bindsym $mod+m exec qutebrowser
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -94,16 +97,27 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # workspaces
-set $workspace1 "1 "
-set $workspace2 "2 "
-set $workspace3 "3 "
-set $workspace4 "4 "
-set $workspace5 "5 "
-set $workspace6 "6 "
-set $workspace7 "7 "
+set $workspace1 "1 "
+set $workspace2 "2 "
+set $workspace3 "3 "
+set $workspace4 "4 "
+set $workspace5 "5 "
+set $workspace6 "6 "
+set $workspace7 "7 "
 set $workspace8 "8 "
 set $workspace9 "9 "
-set $workspace10 "10 "
+set $workspace10 "10 "
+
+workspace $workspace1 output "DP-3"
+workspace $workspace2 output "DP-3"
+workspace $workspace3 output "DP-3"
+workspace $workspace4 output "DP-3"
+workspace $workspace5 output "DP-3"
+workspace $workspace6 output "DP-2"
+workspace $workspace7 output "DP-2"
+workspace $workspace8 output "DP-2"
+workspace $workspace9 output "DP-2"
+workspace $workspace10 output "DP-2"
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -154,10 +168,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym odiaeresis resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -201,7 +215,7 @@ bar {
 }
 
 #bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 486 -opacity 85 -bw 0 -color-normal $bg-color,$text-color,$bg-color,$bg-color,$text-color -color-urgent $bg-color,$bg-color,$text-color,$bg-color,#9575cd -color-active $bg-color,$text-color,$bg-color,$bg-color,$text-color -color-window $bg-color,$text-color,$text-color -font Ubuntu Bold 12 -no-config
-bindsym $mod+shift+x exec i3lock -i /home/coffee/Pictures/riddick2.png
+bindsym $mod+shift+x exec i3lock -t -i ~/Pictures/riddick2.png
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5% #increase sound volume
@@ -223,12 +237,13 @@ bindsym XF86TouchpadToggle exec /home/coffee/.config/i3/toggletouchpad.sh # togg
 exec --no-startup-id echo "$0: DESKTOP_AUTOSTART_ID $DESKTOP_AUTOSTART_ID, registering with org.gnome.SessionManager"
 exec --no-startup-id dbus-send --session --print-reply=literal --dest=org.gnome.SessionManager "/org/gnome/SessionManager" org.gnome.SessionManager.RegisterClient "string:i3" "string:$DESKTOP_AUTOSTART_ID"
 exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
+exec --no-startup-id /usr/lib/gnome-settings-daemon/gnome-settings-daemon
 exec_always --no-startup-id gnome-power-manager
 
 exec --no-startup-id synclient NaturalScrolling=1 VertScrollDelta=-113
 exec --no-startup-id "setxkbmap -model asus_laptop -layout us,se -option grp:alt_shift_toggle -option caps:swapescape"
 exec --no-startup-id start-pulseaudio-x11
-exec_always feh --bg-scale /home/coffee/Pictures/riddick.jpg
+exec_always feh --bg-scale ~/Pictures/riddick.jpg
 exec_always /home/coffee/.screenlayout/layout.sh
 exec --no-startup-id nm-applet
 exec --no-startup-id dropbox start
