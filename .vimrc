@@ -75,6 +75,7 @@ filetype plugin indent on    " required
 
 
 
+set encoding=utf-8
 set path+=**
 set wildmenu
 " allow backspacing over everything in insert mode

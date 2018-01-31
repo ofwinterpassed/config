@@ -28,6 +28,10 @@ then
 	# gnome-keyring
 	export $(gnome-keyring-daemon -s)
 else
+	QTDIR="/home/jc/Qt5.9.4/5.9.4/gcc64"
+	export QTDIR
+	export LC_ALL=C
+	export LD_LIBRARY_PATH=/home/jc/ff/editor/build-editor/debug:/home/jc/Qt5.9.4/5.9.4/gcc64/bin/lib
 	# Powerline
 	if [ -r /usr/share/powerline/bindings/zsh/powerline.zsh ]
 	then
@@ -35,6 +39,8 @@ else
 	fi
 	source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+	#emscripten
+	source ~/emsdk/emsdk_env.sh
 fi
 # Set up the prompt
 
