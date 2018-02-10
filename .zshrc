@@ -32,6 +32,10 @@ else
 	export QTDIR
 	export LC_ALL=C
 	export LD_LIBRARY_PATH=/home/jc/ff/editor/build-editor/debug:/home/jc/Qt5.9.4/5.9.4/gcc64/bin/lib
+	# set colors
+	(~/.local/bin/wal -r &)
+	# Path
+	PATH="${PATH}:${HOME}/.local/bin"
 	# Powerline
 	if [ -r /usr/share/powerline/bindings/zsh/powerline.zsh ]
 	then
@@ -75,3 +79,4 @@ zstyle ':completion:*' verbose true
 
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+

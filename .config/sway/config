@@ -214,7 +214,7 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-set $bg-color 	         #000000
+set $bg-color 	         #00000000
 set $inactive-bg-color   #000000
 set $text-color          #f3f4f5
 set $inactive-text-color #838485
@@ -226,6 +226,10 @@ client.focused          $bg-color           $bg-color          $text-color      
 client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
 client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
 client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
+
+# border style
+#
+default_border pixel 1
 
 #
 # Status Bar:
