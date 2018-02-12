@@ -241,7 +241,8 @@ exec --no-startup-id /usr/lib/gnome-settings-daemon/gnome-settings-daemon
 exec_always --no-startup-id gnome-power-manager
 
 exec --no-startup-id synclient NaturalScrolling=1 VertScrollDelta=-113
-exec --no-startup-id "setxkbmap -model asus_laptop -layout us,se -option grp:alt_shift_toggle -option caps:swapescape"
+exec --no-startup-id "setxkbmap -model applealu_ansi -layout us,se -option grp:alt_shift_toggle -option lv3:ralt_switch -option misc:typo -option apple:alupckeys"
+#exec --no-startup-id "setxkbmap -model asus_laptop -layout us,se -option grp:alt_shift_toggle -option caps:swapescape"
 exec --no-startup-id start-pulseaudio-x11
 exec_always feh --bg-scale ~/Pictures/riddick.jpg
 exec_always /home/coffee/.screenlayout/layout.sh

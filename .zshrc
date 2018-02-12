@@ -40,7 +40,7 @@ else
 	source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 	#emscripten
-	source ~/emsdk/emsdk_env.sh
+	#source ~/emsdk/emsdk_env.sh
 fi
 # Set up the prompt
 
