@@ -28,14 +28,19 @@ then
 	# gnome-keyring
 	export $(gnome-keyring-daemon -s)
 else
-	QTDIR="/home/jc/Qt5.9.4/5.9.4/gcc64"
+	NDK="/home/jc/android-ndk-r16b"
+	export NDK
+	ANDROID_NDK="${NDK}"
+	export ANDROID_NDK
+
+	QTDIR="${HOME}/Qt5.9.4/5.9.4/gcc64"
 	export QTDIR
 	export LC_ALL=C
 	export LD_LIBRARY_PATH=/home/jc/ff/editor/build-editor/debug:/home/jc/Qt5.9.4/5.9.4/gcc64/bin/lib
 	# set colors
 	(~/.local/bin/wal -r &)
 	# Path
-	PATH="${PATH}:${HOME}/.local/bin"
+	PATH="${HOME}/android_sdk/tools:${HOME}/android_sdk/tools/bin:${HOME}/android_sdk/platform-tools:${HOME}/android_sdk/build-tools/27.0.3:${QTDIR}/bin:${PATH}:${HOME}/.local/bin"
 	# Powerline
 	if [ -r /usr/share/powerline/bindings/zsh/powerline.zsh ]
 	then
