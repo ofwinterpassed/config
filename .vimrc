@@ -33,31 +33,18 @@ Plugin 'VundleVim/Vundle.vim'
 " Pass the path to set the runtimepath properly.
 "Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " Avoid a name conflict with L9
-"Plugin 'user/L9', {'name': 'newL9'}
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'tomasr/molokai'
 Plugin 'kana/vim-operator-user'
 Plugin 'rhysd/vim-clang-format'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
-"Plugin 'mhinz/vim-startify'
-"Plugin 'critiqjo/lldb.nvim'
-Plugin 'rdnetto/YCM-Generator'
 Plugin 'jreybert/vimagit'
 Plugin 'vim-airline/vim-airline'
-Plugin 'vim-scripts/Conque-GDB'
-"Plugin 'LucHermitte/lh-vim-lib'
-"Plugin 'LucHermitte/lh-tags'
-"Plugin 'LucHermitte/lh-dev'
-"Plugin 'LucHermitte/lh-brackets'
-"Plugin 'LucHermitte/searchInRuntime'
-"Plugin 'LucHermitte/mu-template'
-"Plugin 'tomtom/stakeholders_vim'
-"Plugin 'LucHermitte/lh-cpp'
-"Plugin 'LucHermitte/vim-refactor'
-"Plugin 'LucHermitte/clang_indexer'
-"Plugin 'LucHermitte/vim-clang'
+Plugin 'prabirshrestha/asyncomplete.vim'
+Plugin 'prabirshrestha/async.vim'
+Plugin 'prabirshrestha/vim-lsp'
+Plugin 'prabirshrestha/asyncomplete-lsp.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -146,6 +133,16 @@ if has("autocmd")
 
 	augroup END
 
+	if executable('cquery')
+		au User lsp_setup call lsp#register_server({
+			\ 'name': 'cquery',
+			\ 'cmd': {server_info->['cquery']},
+			\ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
+			\ 'initialization_options': { 'cacheDirectory': '~/cquery/cache' },
+			\ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
+			\ })
+	endif
+
 else
 
 	set autoindent		" always set autoindenting on
@@ -174,7 +171,7 @@ set foldmethod=syntax
 :endfunction
 
 if system("uname") == "Linux"
-	let g:clang_library_path = '/usr/lib/llvm-5.0/lib'
+	let g:clang_library_path = '/usr/lib/llvm-6.0/lib'
 else
 	let g:clang_library_path = '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
 endif
@@ -183,35 +180,35 @@ endif
 let g:python_host_prog = '/System/Library/Frameworks/Python.framework/Versions/2.7/bin/python'
 
 " YouCompleteMe
-nnoremap <leader>jd :YcmCompleter GoTo<CR>
-nnoremap <leader>fi :YcmCompleter FixIt<CR>
-nnoremap <leader>gt :YcmCompleter GetType<CR>
-nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
+"nnoremap <leader>jd :YcmCompleter GoTo<CR>
+"nnoremap <leader>fi :YcmCompleter FixIt<CR>
+"nnoremap <leader>gt :YcmCompleter GetType<CR>
+"nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
 "let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 "Do not ask when starting vim
-let g:ycm_confirm_extra_conf = 0
-let g:syntastic_always_populate_loc_list = 1
-let g:ycm_collect_identifiers_from_tags_files = 1
+"let g:ycm_confirm_extra_conf = 0
+"let g:syntastic_always_populate_loc_list = 1
+"let g:ycm_collect_identifiers_from_tags_files = 1
 "let g:ycm_python_binary_path = '/usr/local/Cellar/python3'
-set tags+=./.tags
+"set tags+=./.tags
 
 " ClangFormat
 nnoremap <leader>cf :ClangFormat<CR>
 
 " fzf
-set rtp+=~/.fzf
-set rtp+=/usr/local/opt/fzf
+"set rtp+=~/.fzf
+"set rtp+=/usr/local/opt/fzf
 
 " LLDB
-nmap <M-b> <Plug>LLBreakSwitch
-vmap <F2> <Plug>LLStdInSelected
-nnoremap <F4> :LLstdin<CR>
-nnoremap <F5> :LLmode debug<CR>
-nnoremap <S-F5> :LLmode code<CR>
-nnoremap <F8> :LL continue<CR>
-nnoremap <S-F8> :LL process interrupt<CR>
-nnoremap <F9> :LL print <C-R>=expand('<cword>')<CR>
-vnoremap <F9> :<C-U>LL print <C-R>=lldb#util#get_selection()<CR><CR>
+"nmap <M-b> <Plug>LLBreakSwitch
+"vmap <F2> <Plug>LLStdInSelected
+"nnoremap <F4> :LLstdin<CR>
+"nnoremap <F5> :LLmode debug<CR>
+"nnoremap <S-F5> :LLmode code<CR>
+"nnoremap <F8> :LL continue<CR>
+"nnoremap <S-F8> :LL process interrupt<CR>
+"nnoremap <F9> :LL print <C-R>=expand('<cword>')<CR>
+"vnoremap <F9> :<C-U>LL print <C-R>=lldb#util#get_selection()<CR><CR>
 
 " air0line
 set laststatus=2
@@ -224,3 +221,21 @@ let g:netrw_liststyle=3
 let g:netrw_list_hide=netrw_gitignore#Hide()
 let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 
+" vim-lsp
+let g:lsp_signs_enabled = 1         " enable signs
+let g:lsp_diagnostics_echo_cursor = 1 " enable echo under cursor when in normal mode
+let g:lsp_signs_error = {'text': '✗'}
+let g:lsp_signs_warning = {'text': '‼'} " icons require GUI
+let g:lsp_signs_hint = {'text': '💡'} " icons require GUI
+set signcolumn=yes
+highlight SignColumn ctermbg=None
+
+" asyncomplete
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
+imap <c-space> <Plug>(asyncomplete_force_refresh)
+let g:asyncomplete_remove_duplicates = 1
+set completeopt+=preview
+set cot+=preview
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
