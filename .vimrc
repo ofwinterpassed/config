@@ -45,6 +45,7 @@ Plugin 'prabirshrestha/asyncomplete.vim'
 Plugin 'prabirshrestha/async.vim'
 Plugin 'prabirshrestha/vim-lsp'
 Plugin 'prabirshrestha/asyncomplete-lsp.vim'
+Plugin 'MichaelMa2014/vim-instant-markdown'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
