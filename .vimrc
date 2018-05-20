@@ -92,12 +92,12 @@ map Q gq
 inoremap <C-U> <C-G>u<C-U>
 
 " In many terminal emulators the mouse works just fine, thus enable it.
-if has('mouse')
-	set mouse=a
-	if !has('nvim')
-		set ttymouse=xterm2
-	endif
-endif
+" if has('mouse')
+" 	set mouse=a
+" 	if !has('nvim')
+" 		set ttymouse=xterm2
+" 	endif
+" endif
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.

@@ -36,7 +36,7 @@ else
 	# set colors
 	(~/.local/bin/wal -r &)
 	# Path
-	PATH="${HOME}/android_sdk/tools:${HOME}/android_sdk/tools/bin:${HOME}/android_sdk/platform-tools:${HOME}/android_sdk/build-tools/27.0.3:${QTDIR}/bin:${PATH}:${HOME}/.local/bin"
+	PATH="${HOME}/.scripts:${HOME}/android_sdk/tools:${HOME}/android_sdk/tools/bin:${HOME}/android_sdk/platform-tools:${HOME}/android_sdk/build-tools/27.0.3:${QTDIR}/bin:${PATH}:${HOME}/.local/bin"
 	# Powerline
 	if [ -r /usr/share/powerline/bindings/zsh/powerline.zsh ]
 	then

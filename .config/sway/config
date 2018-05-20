@@ -15,7 +15,7 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 #set $term ECORE_EVAS_ENGINE=wayland_egl ELM_ENGINE=wayland_egl terminology -B
-set $term urxvt -fade 20 +sb
+set $term urxvt -fade 20 +sb -depth 32 -bg rgba:0000/0000/0000/8888
 # Your preferred application launcher
 set $menu dmenu_run
 set $menu j4-dmenu-desktop --dmenu="(cat ; (stest -flx $(echo $PATH | tr : ' ') | sort -u)) | dmenu -i"
@@ -84,7 +84,7 @@ output * bg /home/coffee/Pictures/riddick.jpg fill
     bindsym $mod+d exec $menu
     bindsym $mod+p exec j4-dmenu-desktop
 		# lock screen
-		bindsym $mod+shift+x exec i3lock -i /home/coffee/Pictures/riddick2.png
+		bindsym $mod+shift+x exec swaylock -i /home/coffee/Pictures/riddick2.png --indicator-radius 200 --ringcolor 00ff8888 --insidecolor 88000088 --keyhlcolor ff008888 --line-uses-inside --ringvercolor ff000088 --indicator-thickness 20 --insidevercolor ff000088 --font pango:moonhouse
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -97,6 +97,7 @@ output * bg /home/coffee/Pictures/riddick.jpg fill
     bindsym $mod+Shift+c reload
 
     # exit sway (logs you out of your wayland session)
+    #bindsym $mod+Shift+e exec ~/voidrice/.scripts/prompt "Close session?" "swaymsg exit"
     bindsym $mod+Shift+e exit
 #
 # Moving around:
@@ -254,7 +255,7 @@ bar {
     position top
   status_command i3blocks -c ~/.config/i3/i3blocks.conf
 	colors {
-		background $bg-color
+		background #00000088
 		separator #757575
 		#                  border             background         text
 		focused_workspace  $bg-color          $bg-color          $text-color
