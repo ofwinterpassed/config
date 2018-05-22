@@ -4,7 +4,7 @@ if [ "$(uname 2> /dev/null)" != "Linux" ]
 then
 	# Setting PATH for Python 3.5
 	# The orginal version is saved in .bash_profile.pysave
-	PATH="~/android-sdk-macosx/tools:~/android-sdk-macosx/platforms:~/android-sdk-macosx/platform-tools:/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
+	PATH="/Library/TeX/texbin:~/android-sdk-macosx/tools:~/android-sdk-macosx/platforms:~/android-sdk-macosx/platform-tools:/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
 
 	NDK="/Users/johanneschristenson/android-ndk-r10d"
 	export NDK
