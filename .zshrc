@@ -24,9 +24,6 @@ then
 		source /Users/johanneschristenson/Library/Python/3.6/lib/python/site-packages/powerline/bindings/zsh/powerline.zsh
 	fi
 	source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-	# gnome-keyring
-	export $(gnome-keyring-daemon -s)
 else
 	NDK="/home/jc/android-ndk-r16b"
 	export NDK
@@ -34,7 +31,7 @@ else
 	export ANDROID_NDK
 
 	# set colors
-	(~/.local/bin/wal -r &)
+  # (~/.local/bin/wal -r &)
 	# Path
 	PATH="${HOME}/.scripts:${HOME}/android_sdk/tools:${HOME}/android_sdk/tools/bin:${HOME}/android_sdk/platform-tools:${HOME}/android_sdk/build-tools/27.0.3:${QTDIR}/bin:${PATH}:${HOME}/.local/bin"
 	# Powerline
@@ -46,6 +43,9 @@ else
 
 	#emscripten
 	#source ~/emsdk/emsdk_env.sh
+
+	# gnome-keyring
+	export $(gnome-keyring-daemon -s)
 fi
 # Set up the prompt
 
@@ -54,7 +54,6 @@ setopt histignorealldups sharehistory
 # Use emacs keybindings even if our EDITOR is set to vi
 bindkey -v
 
-alias ls="ls -h --color=auto"
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=1000
 SAVEHIST=1000
@@ -69,7 +68,16 @@ zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' menu select=2
-eval "$(dircolors -b)"
+
+if whence dircolors >/dev/null; then
+  eval "$(dircolors -b)"
+  zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+  alias ls='ls -h --color=auto'
+else
+  export CLICOLOR=1
+  zstyle ':completion:*:default' list-colors ''
+fi
+
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
