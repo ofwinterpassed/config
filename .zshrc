@@ -31,7 +31,7 @@ else
 	export ANDROID_NDK
 
 	# set colors
-  (~/.local/bin/wal -r &)
+  (~/.local/bin/wal -R &)
 	# Path
 	PATH="${HOME}/.scripts:${HOME}/android_sdk/tools:${HOME}/android_sdk/tools/bin:${HOME}/android_sdk/platform-tools:${HOME}/android_sdk/build-tools/27.0.3:${QTDIR}/bin:${PATH}:${HOME}/.local/bin"
 	# Powerline
